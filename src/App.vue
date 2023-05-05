@@ -1,6 +1,7 @@
 <script >
 import HeaderComp from './components/HeaderComp.vue';
 import MainComp from './components/MainComp.vue';
+import {store} from './store'
 
 
 
@@ -11,7 +12,22 @@ export default{
     HeaderComp,
     MainComp,
     
-}
+  },
+  data(){
+    return{
+      store
+    }
+  },
+  created(){
+    
+  },
+  methods:{
+    apiYugi(){
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=1').then((response) =>{
+        console.log(response.data.name)
+      })
+    }
+  }
 }
 
 </script>
