@@ -4,11 +4,13 @@ import MainComp from './components/MainComp.vue';
 
 
 
+
 export default{
   name: 'App',
   components: {
     HeaderComp,
-    MainComp
+    MainComp,
+    
 }
 }
 
@@ -16,9 +18,14 @@ export default{
 
 <template>
   <HeaderComp/>
-  <div class="background-orange">
+  <div class="first-bg">
     <div class="second-bg">
-      <MainComp/>
+      <div class="third-bg">
+        <div >
+          <MainComp/>
+        </div>
+        
+      </div>
     </div>
   </div>
 </template>
@@ -26,16 +33,23 @@ export default{
 <style lang="scss">
 @use "./style/main.scss";
 
-.background-orange{
+.first-bg{
   background-color: orange;
-  height: 100vh;
+  // height: 100vh;
   display: flex;
+  justify-content: center;
   .second-bg{
     width: 80%;
     margin: 0 auto;
-    height: 500px;
+    margin: 50px;
+    // height: 500px;
     margin-top: 50px;
     background-color: white;
+    .third-bg{
+      margin: 50px;
+      
+    }
+    
   }
 }
 </style>
