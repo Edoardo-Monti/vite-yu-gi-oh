@@ -11,6 +11,7 @@ export default{
         <div class="card-body">
             <h5 class="card-title">{{ propsCard.name }}</h5>
             <p class="card-text">{{ propsCard.type }}</p>
+            <p class="card-text"> {{ propsCard.desc }}</p>
         </div>
 </div>
 </template>
