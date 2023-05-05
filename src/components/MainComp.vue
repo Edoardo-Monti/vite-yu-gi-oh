@@ -17,7 +17,7 @@ import {store} from '../store';
 </script>
 <template>
     <div class="cont-black">
-        <h2>Le carte sono: {{store.arrayCarte.length}}</h2>
+        <h2>Il tuo mazzo è composto da {{store.arrayCarte.length}} carte</h2>
     </div>
     <div class="cardCont">
           <SingleCard v-for="(elem, index) in store.arrayCarte"
