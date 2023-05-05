@@ -17,7 +17,7 @@ import {store} from '../store';
 </script>
 <template>
     <div class="cont-black">
-        <h2>Found tot Card</h2>
+        <h2>Le carte sono: {{store.arrayCarte.length}}</h2>
     </div>
     <div class="cardCont">
           <SingleCard v-for="(elem, index) in store.arrayCarte"
