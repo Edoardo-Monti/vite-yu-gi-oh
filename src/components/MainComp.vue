@@ -1,10 +1,17 @@
 <script>
 import SingleCard from './SingleCard.vue';
+import {store} from '../store';
 
     export default{
         name:"MainComp",
         components: {
             SingleCard 
+            
+        },
+        data(){
+            return{
+                store
+            }
         }
     }
 </script>
@@ -12,8 +19,9 @@ import SingleCard from './SingleCard.vue';
     <div class="cont-black">
         <h2>Found tot Card</h2>
     </div>
-    <div>
-          <SingleCard/>
+    <div class="cardCont">
+          <SingleCard v-for="(elem, index) in store.arrayCarte"
+          :propsCard=elem />
     </div>
     
 </template>
@@ -28,5 +36,10 @@ import SingleCard from './SingleCard.vue';
         font-size: 15px;
     }
 }
-   
+
+.cardCont{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 </style>

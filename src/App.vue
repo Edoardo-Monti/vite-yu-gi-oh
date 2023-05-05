@@ -25,9 +25,14 @@ export default{
   },
   methods:{
     apiYugi(){
-      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0')
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=1')
       .then((res) =>{
-        console.log(res)
+        console.log(res.data.data[0].name)
+
+        const datiApi = res.data.data
+
+        this.store.arrayCarte = datiApi
+        console.log(this.store.arrayCarte)
       })
     }
   }

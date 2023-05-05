@@ -1,20 +1,22 @@
 <script>
 export default{
-    name:"SingleCard"
+    name:"SingleCard",
+    props:['propsCard']
 }
 
 </script>
 <template>
-    <div class="card" style="width: 18rem;">
-        <img src="" class="card-img-top" alt="...">
+    <div class="card">
+        <img :src="propsCard.card_images[0].image_url" class="card-img-top" alt="">
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">{{ propsCard.name }}</h5>
+            <p class="card-text">{{ propsCard.type }}</p>
         </div>
 </div>
 </template>
 <style lang="scss" scoped>
-
-
+.card{
+    width: calc(100% / 5 - 5px);
+    margin-top: 10px;
+}
 </style>
