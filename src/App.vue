@@ -1,7 +1,9 @@
 <script >
+import axios from 'axios';
 import HeaderComp from './components/HeaderComp.vue';
 import MainComp from './components/MainComp.vue';
-import {store} from './store'
+import {store} from './store';
+
 
 
 
@@ -19,12 +21,13 @@ export default{
     }
   },
   created(){
-    
+    this.apiYugi()
   },
   methods:{
     apiYugi(){
-      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=1').then((response) =>{
-        console.log(response.data.name)
+      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0')
+      .then((res) =>{
+        console.log(res)
       })
     }
   }
