@@ -5,6 +5,7 @@ export const store = reactive(
         arrayCarte: [],
         arrayType: [],
       
-        searchInput:""
+        searchInput:"",
+        spinner: false
     }
 )

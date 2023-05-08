@@ -3,6 +3,7 @@ import axios from 'axios';
 import HeaderComp from './components/HeaderComp.vue';
 import MainComp from './components/MainComp.vue';
 import SearchComp from './components/SearchComp.vue';
+import Spinner from './components/Spinner.vue';
 import {store} from './store';
 
 
@@ -15,7 +16,8 @@ export default{
   components: {
     HeaderComp,
     MainComp,
-    SearchComp
+    SearchComp,
+    Spinner
 },
   data(){
     return{
@@ -49,8 +51,11 @@ export default{
     //     }
     //   })
     // }
+
+    store.spinner = true
       if(store.searchInput == ""){
         axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100& offset=1').then((res => {
+          store.spinner = false
           const datiApi = res.data.data
 
           this.store.arrayCarte = datiApi
@@ -70,6 +75,7 @@ export default{
         }))
       }else{
         axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100& offset=1&type=${store.searchInput}`).then((res => {
+          store.spinner = false
           const datiApi = res.data.data
 
           this.store.arrayCarte = datiApi
@@ -102,7 +108,8 @@ export default{
   <div class="first-bg">
     <div class="second-bg">
       <SearchComp @nameEmit="apiYugi"/>
-      <div class="third-bg">
+      <Spinner v-if="store.spinner "/>
+      <div v-else class="third-bg">
         <div >
           <MainComp/>
         </div>
