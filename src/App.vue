@@ -25,33 +25,10 @@ export default{
     }
   },
   created(){
-    this.apiYugi()
+    // this.apiYugi()
   },
-  methods:{
+  computed:{
     apiYugi(){
-    //   axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=500&offset=1')
-    //   .then((res) =>{
-    //     console.log(res.data.data[0].name)
-
-    //     const datiApi = res.data.data
-
-    //     this.store.arrayCarte = datiApi
-    //     console.log(this.store.arrayCarte)
-
-
-    //     for (let i = 0; i < datiApi.length; i++) {
-    //       const datiType = res.data.data[i].type
-
-    //       if(!store.arrayType.includes(datiType)){
-    //         store.arrayType.push(datiType)
-    //         //console.log(store.arrayType)
-    //       }
-
-          
-    //     }
-    //   })
-    // }
-
     store.spinner = true
       if(store.searchInput == ""){
         axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100& offset=1').then((res => {
@@ -96,6 +73,10 @@ export default{
       }
       
     }
+
+  
+  },
+  methods:{
 
   }
 
