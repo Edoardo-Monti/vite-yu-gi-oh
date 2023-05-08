@@ -27,27 +27,72 @@ export default{
   },
   methods:{
     apiYugi(){
-      axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=1')
-      .then((res) =>{
-        console.log(res.data.data[0].name)
+    //   axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=500&offset=1')
+    //   .then((res) =>{
+    //     console.log(res.data.data[0].name)
 
-        const datiApi = res.data.data
+    //     const datiApi = res.data.data
 
-        this.store.arrayCarte = datiApi
-        console.log(this.store.arrayCarte)
+    //     this.store.arrayCarte = datiApi
+    //     console.log(this.store.arrayCarte)
 
 
-        for (let i = 0; i < datiApi.length; i++) {
-          const datiType = res.data.data[i].type
+    //     for (let i = 0; i < datiApi.length; i++) {
+    //       const datiType = res.data.data[i].type
 
-          store.arrayType.push(datiType)
-          // console.log(store.arrayType)
+    //       if(!store.arrayType.includes(datiType)){
+    //         store.arrayType.push(datiType)
+    //         //console.log(store.arrayType)
+    //       }
 
           
-        }
-      })
+    //     }
+    //   })
+    // }
+      if(store.searchInput == ""){
+        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100& offset=1').then((res => {
+          const datiApi = res.data.data
+
+          this.store.arrayCarte = datiApi
+          console.log(this.store.arrayCarte)
+
+
+          for (let i = 0; i < datiApi.length; i++) {
+             const datiType = res.data.data[i].type
+
+             if(!store.arrayType.includes(datiType)){
+               store.arrayType.push(datiType)
+               //console.log(store.arrayType)
+             }
+
+      
+          }
+        }))
+      }else{
+        axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100& offset=1&type=${store.searchInput}`).then((res => {
+          const datiApi = res.data.data
+
+          this.store.arrayCarte = datiApi
+          console.log(this.store.arrayCarte)
+
+
+          for (let i = 0; i < datiApi.length; i++) {
+             const datiType = res.data.data[i].type
+
+             if(!store.arrayType.includes(datiType)){
+               store.arrayType.push(datiType)
+               //console.log(store.arrayType)
+             }
+
+      
+          }
+        }))
+      }
+      
     }
+
   }
+
 }
 
 </script>
@@ -56,7 +101,7 @@ export default{
   <HeaderComp/>
   <div class="first-bg">
     <div class="second-bg">
-      <SearchComp/>
+      <SearchComp @nameEmit="apiYugi"/>
       <div class="third-bg">
         <div >
           <MainComp/>
