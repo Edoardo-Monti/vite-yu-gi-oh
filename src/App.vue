@@ -2,7 +2,9 @@
 import axios from 'axios';
 import HeaderComp from './components/HeaderComp.vue';
 import MainComp from './components/MainComp.vue';
+import SearchComp from './components/SearchComp.vue';
 import {store} from './store';
+
 
 
 
@@ -13,8 +15,8 @@ export default{
   components: {
     HeaderComp,
     MainComp,
-    
-  },
+    SearchComp
+},
   data(){
     return{
       store
@@ -33,6 +35,16 @@ export default{
 
         this.store.arrayCarte = datiApi
         console.log(this.store.arrayCarte)
+
+
+        for (let i = 0; i < datiApi.length; i++) {
+          const datiType = res.data.data[i].type
+
+          store.arrayType.push(datiType)
+          // console.log(store.arrayType)
+
+          
+        }
       })
     }
   }
@@ -44,6 +56,7 @@ export default{
   <HeaderComp/>
   <div class="first-bg">
     <div class="second-bg">
+      <SearchComp/>
       <div class="third-bg">
         <div >
           <MainComp/>
