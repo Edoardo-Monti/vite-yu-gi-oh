@@ -25,13 +25,13 @@ export default{
     }
   },
   created(){
-    // this.apiYugi()
+    this.apiYugi
   },
   computed:{
     apiYugi(){
     store.spinner = true
       if(store.searchInput == ""){
-        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100& offset=1').then((res => {
+        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=100&offset=1').then((res => {
           store.spinner = false
           const datiApi = res.data.data
 
